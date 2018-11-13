@@ -1,12 +1,12 @@
 
 var express = require("express");
-var dotenv = require('dotenv')
+// var dotenv = require('dotenv')
 var bodyParser = require("body-parser");
 var path = require("path");
-var mongoose = require("mongoose");
+var mongodb = require("mongoose");
 
 
-dotenv.config()
+// dotenv.config();
 var db = require("./models");
 // Sets up the Express App
 // =============================================================
