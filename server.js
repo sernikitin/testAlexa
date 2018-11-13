@@ -49,6 +49,6 @@ process.env.MONGOHQ_URL ||
 //  mongoose.connect("mongodb://localhost/forALEXA");
 
 
-app.listen(PORT, function() {
-    console.log("App running on port " + PORT + "!");
+app.listen(theport, function() {
+    console.log("App running on port " + theport + "!");
   });
