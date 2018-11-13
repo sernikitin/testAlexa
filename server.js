@@ -27,7 +27,7 @@ require("./routes/apiRoutes.js")(app);
 
 
 var uristring =
-process.env.MONGOLAB_URI ||
+MONGOLAB_URI ||
 'mongodb://localhost/HelloMongoose';
 mongoose.connect(uristring);
 
