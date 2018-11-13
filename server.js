@@ -27,7 +27,6 @@ require("./routes/apiRoutes.js")(app);
 // mongoose.connect("mongodb://heroku_91zm5llr:DBpassword123@ds159993.mlab.com:59993/heroku_jbjk6mn2");
 var uristring =
 process.env.MONGOLAB_URI ||
-process.env.MONGOHQ_URL ||
 'mongodb://localhost/HelloMongoose';
 
 mongoose.connect(uristring, function (err, res) {
