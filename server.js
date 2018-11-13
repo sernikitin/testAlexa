@@ -24,20 +24,16 @@ app.use(express.static("public"));
 require("./routes/apiRoutes.js")(app);
 
 //connection to our mongo server 
+mongoose.connect("mongodb://heroku_91zm5llr:DBpassword123@ds159993.mlab.com:59993/heroku_jbjk6mn2");
 
 
-var uristring =
-MONGOLAB_URI ||
-'mongodb://localhost/HelloMongoose';
-mongoose.connect(uristring);
-
-// mongoose.connect(uristring, function (err, res) {
-//   if (err) {
-//   console.log ('ERROR connecting to: ' + uristring + '. ' + err);
-//   } else {
-//   console.log ('Succeeded connected to: ' + uristring);
-//   }
-// });
+    // mongoose.connect(uristring, function (err, res) {
+    //   if (err) {
+    //   console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+    //   } else {
+    //   console.log ('Succeeded connected to: ' + uristring);
+    //   }
+    // });
 
 app.listen(PORT, function() {
     console.log("App running on port " + PORT + "!");
