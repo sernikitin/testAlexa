@@ -1,20 +1,18 @@
 
 var express = require("express");
- var dotenv = require('dotenv')
+var dotenv = require('dotenv')
 var bodyParser = require("body-parser");
 var path = require("path");
 var mongoose = require("mongoose");
 
 
-
+dotenv.config()
 var db = require("./models");
 // Sets up the Express App
 // =============================================================
 var app = express();
 var PORT = process.env.PORT || 3349;
 
-
-// dotenv.config();
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
@@ -28,39 +26,27 @@ require("./routes/apiRoutes.js")(app);
 
 
 
-var env = process.env.NODE_ENV || 'production',
-    config = require('./config')[env],
-    mongoose = require('mongoose');
+// localhost if we don't find one.
+var uristring =
+process.env.MONGOLAB_URI ||
+process.env.MONGOHQ_URL ||
+'mongodb://localhost/HelloMongoose';
 
-var db = mongoose.connect(config.db);
+    // The http server will listen to an appropriate port, or default to
+    // port 5000.
+    var theport = process.env.PORT || 5000;
 
 
-// var url = process.env.MONGOLAB_URI;
-
+    mongoose.connect(uristring, function (err, res) {
+      if (err) {
+      console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+      } else {
+      console.log ('Succeeded connected to: ' + uristring);
+      }
+    });
 
 //connection to our mongo server 
 //  mongoose.connect("mongodb://localhost/forALEXA");
-
-//We need to work with "MongoClient" interface in order to connect to a mongodb server.
-// var MongoClient = mongoose.MongoClient;
-
-// Connection URL. This is where your mongodb server is running.
-
-//(Focus on This Variable)
-// var url = 'mongodb://localhost:27017/my_database_name';      
-//(Focus on This Variable)
-
-// Use connect method to connect to the Server
-//   MongoClient.connect(url, function (err, db) {
-//   if (err) {
-//     console.log('Unable to connect to the mongoDB server. Error:', err);
-//   } else {
-//     console.log('Connection established to', url);
-//     // do some work here with the database.
-//     //Close connection
-//     db.close();
-//   }
-// });
 
 
 app.listen(PORT, function() {
