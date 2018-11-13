@@ -10,7 +10,7 @@ var db = require("./models");
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 5000;
+var PORT = process.env.PORT || 3349;
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,9 +25,12 @@ require("./routes/apiRoutes.js")(app);
 
 //connection to our mongo server 
 // mongoose.connect("mongodb://heroku_91zm5llr:DBpassword123@ds159993.mlab.com:59993/heroku_jbjk6mn2");
+
 var uristring =
 process.env.MONGOLAB_URI ||
+process.env.MONGOHQ_URL ||
 'mongodb://localhost/HelloMongoose';
+
 
 mongoose.connect(uristring, function (err, res) {
   if (err) {
