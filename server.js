@@ -1,8 +1,6 @@
 
 var express = require("express");
 // var dotenv = require('dotenv')
-var http = require ('http');         // For serving a basic web page.
-
 var bodyParser = require("body-parser");
 var path = require("path");
 var mongoose = require("mongoose");
